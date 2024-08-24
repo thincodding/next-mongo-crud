@@ -1,6 +1,9 @@
 /* eslint-disable @next/next/no-async-client-component */
 "use client";
 
+import Login from "./components/Login";
+import Product from "./product/page";
+
 async function getData() {
   try {
     const res = await fetch("http://localhost:3000/api/post", {cache: "no-store"});
@@ -21,9 +24,13 @@ export default async function Home() {
 
   return (
     <main>
-      {posts?.map((item: any) => (
+      {/* {posts?.map((item: any) => (
         <h1 key={item.id}>{item.msg}</h1>
-      ))}
+      ))} */}
+
+      {/* <Product/> */}
+
+      <Login/>
       
     </main>
 

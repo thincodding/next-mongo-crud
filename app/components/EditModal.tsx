@@ -42,6 +42,7 @@ export default function EditModal({ products, handleCloseEdit,reloadProducts }: 
             console.log("Data updated");
             handleCloseEdit();
             reloadProducts();
+            
         } catch (err) {
             console.error(err);
             setError('Failed to update the product.');

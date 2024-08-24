@@ -11,15 +11,18 @@ export default function AddNewModal({ onCloseAddModal, onProductAdded }: addModa
   const [productName, setProductName] = useState("")
   const [qty, setQty] = useState("")
   const [price, setPrice] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
 
   const handleSubmit = async (e:any) => {
     e.preventDefault();
+    setIsLoading(true)
 
     const data = {
       productName: productName,
       qty: qty,
       price: price
+      
     }
 
     try {
@@ -42,7 +45,9 @@ export default function AddNewModal({ onCloseAddModal, onProductAdded }: addModa
     } catch (err) {
       console.error("Error:", err);
     }
-
+    finally{
+      setIsLoading(false)
+    }
   }
 
 
@@ -65,7 +70,7 @@ export default function AddNewModal({ onCloseAddModal, onProductAdded }: addModa
               </div>
               <div className='flex justify-end space-x-2'>
                 <button onClick={onCloseAddModal} className='bg-red-600 p-2  text-white hover:bg-red-700 px-5'>បិទ</button>
-                <button className='bg-blue-600 p-2  text-white hover:bg-blue-700'>រក្សាទុក</button>
+                <button className='bg-blue-600 p-2  text-white hover:bg-blue-700'>{isLoading ? 'កំពុងរក្សាទុក...' : 'រក្សាទុក'}</button>
               </div>
             </form>
           </div>
